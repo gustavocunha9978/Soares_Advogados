@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  /* Paleta */
+  --taupe: #b3a99c;        /* fundo quente — hero */
+  --taupe-dark: #8f8474;   /* hover/borda sobre taupe */
+  --linen: #ddd9d1;        /* fundo claro — seções alternadas */
+  --linen-deep: #cfcabf;
+  --charcoal: #18171a;     /* fundo escuro — seções de destaque */
+  --charcoal-soft: #232026;
+  --ink: #1c1a17;          /* texto principal */
+  --ink-soft: #4a463f;     /* texto secundário */
+  --paper: #faf8f4;        /* branco quente */
+  --gold: #9c7e4f;         /* acento dourado */
+  --gold-bright: #c7a25c;
+  --rule: rgba(28, 26, 23, 0.14);
+  --rule-on-dark: rgba(250, 248, 244, 0.16);
+
+  --font-display: "Fraunces", serif;
+  --font-mono: "Space Mono", monospace;
+  --font-body: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--paper);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+
+/* Foco visível para acessibilidade */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Botões — estilos explícitos para evitar colisão de classes utilitárias
+   arbitrárias do Tailwind quando cor de texto e de fundo coincidem
+   com variáveis usadas em elementos pais. */
+.btn-dark:hover {
+  background-color: var(--gold) !important;
+}
+
+.btn-light:hover {
+  background-color: var(--gold) !important;
+  color: var(--paper) !important;
+}
+
+.btn-outline-on-dark:hover {
+  border-color: var(--gold-bright) !important;
+  color: var(--gold-bright) !important;
+}
